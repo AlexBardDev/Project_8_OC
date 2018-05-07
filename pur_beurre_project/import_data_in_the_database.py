@@ -2,6 +2,7 @@
 import requests
 import django
 import math
+from django.db import transaction
 
 #Standard library
 import os
@@ -18,7 +19,7 @@ URL_CATEGORY = "https://fr.openfoodfacts.org/categorie/{}/{}.json"
 URL_FOOD = "https://fr.openfoodfacts.org/api/v0/produit/{}.json"
 
 categories = requests.get(URL_ALL_CATEGORIES).json()["tags"]
-for i in range(100):
+for i in range(1):
     #Save a category
     name_category = categories[i]["url"].split("/")[-1]
     new_category = Category.objects.create(name=name_category)
@@ -27,29 +28,43 @@ for i in range(100):
     #Save food
     k = 1
     try:
-        data = requests.get(URL_CATEGORY.format(name_category, k).json()["products"]
+        data = requests.get(URL_CATEGORY.format(name_category, k)).json()["products"]
     except:
         print("""HTTP request doesn't work. Category = {} and k = {}""".format(name_category, k))
     else:
         for product in data:
             #Nutritional information
             nutritional_data = product["nutriments"]
-            calories = math.ceil(int(nutritional_data["energy_100g"])*0.239006)
-            fat = int(nutritional_data["fat_100g"])
-            saturated_fat = int(nutritional_data["saturated-fat_100g"]))
-            carbohydrates = int(nutritional_data["carbohydrates_100g"])
-            sugars = int(nutritional_data["sugars_100g"])
-            proteins = int(nutritional_data["proteins_100g"])
-            salt = int(nutritional_data["salt"])
-            sodium = int(nutritional_data["sodium_100g"])
+            if nutritional_data != {}:
+                try:
+                    calories = math.ceil(int(nutritional_data["energy_100g"])*0.239006)
+                    fat = int(nutritional_data["fat_100g"])
+                    saturated_fat = int(nutritional_data["saturated-fat_100g"])
+                    carbohydrates = int(nutritional_data["carbohydrates_100g"])
+                    sugars = int(nutritional_data["sugars_100g"])
+                    proteins = int(nutritional_data["proteins_100g"])
+                    salt = int(nutritional_data["salt_100g"])
+                    sodium = int(nutritional_data["sodium_100g"])
+ 
+                    #Food
+                    name = product["product_name_fr"]
+                    nutriscore = product["nutrition_grades"]
+                    image = product["image_url"]
+                    link = product["url"]
+                except:
+                    continue
+                else:                
+                    with transaction.atomic():
+                        #Save nutritional information
+                        new_row = NutritionalInformation.objects.create(calories=calories,
+                                fat=fat, saturated_fat=saturated_fat, carbohydrates=carbohydrates, sugars=sugars,
+                                proteins=proteins, salt=salt, sodium=sodium)
 
-            #Save nutritional information
-            new_row = NutritionalInformation.objects.create(calories=calories,
-                    fat=fat, saturated_fat=saturated_fat, carbohydrates=carbohydrates, sugars=sugars,
-                    proteins=proteins, salt=salt, sodium=sodium)
+                        #Save food
+                        new_food = Food.objects.create(name=name, id_category= new_category,
+                                nutriscore=nutriscore, id_nutritional_information= new_row,
+                                image=image, link=link)
+                        print("""{} saved""".format(name))
 
-            #Food
-            name = product["product_name_fr"]
-            nutriscore = product["nutrition_grades"]
-            image = product["image_url"]
-            link = product["url"]
+#import toutes les données
+#transaction
