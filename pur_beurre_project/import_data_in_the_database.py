@@ -67,4 +67,3 @@ for i in range(1):
                         print("""{} saved""".format(name))
 
 #import toutes les données
-#transaction
