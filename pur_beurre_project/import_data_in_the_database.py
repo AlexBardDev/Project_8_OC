@@ -1,16 +1,15 @@
-import os
-import django
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pur_beurre_project.settings')
-django.setup()
-
 #External library
 import requests
+import django
 
 #Standard library
+import os
 
 #Local library
 from food_substitute.models import Food, NutritionalInformation, Category
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pur_beurre_project.settings')
+django.setup()
 
 #Some constants
 URL_ALL_CATEGORIES = "https://fr.openfoodfacts.org/categories.json"
