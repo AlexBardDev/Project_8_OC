@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+def home(request):
+    """This is the home of the web site"""
+
+    return render(request, "food_substitute/home.html")
+
+
