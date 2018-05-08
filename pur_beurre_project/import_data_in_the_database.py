@@ -21,8 +21,9 @@ categories = requests.get(URL_ALL_CATEGORIES).json()["tags"]
 for i in range(100):
     #Save a category
     name_category = categories[i]["url"].split("/")[-1]
-    new_category = Category.objects.create(name=name_category)
-    print("""{} saved.""".format(name_category))
+    if len(Category.objects.filter(name=name_category)) == 0:
+        new_category = Category.objects.create(name=name_category)
+        print("""{} saved.""".format(name_category))
 
     #Save food
     for k in range(1,4):
@@ -33,37 +34,41 @@ for i in range(100):
             break
         else:
             for product in data:
-                #Nutritional information
-                nutritional_data = product["nutriments"]
-                if nutritional_data != {}:
-                    try:
-                        calories = math.ceil(int(nutritional_data["energy_100g"])*0.239006)
-                        fat = int(nutritional_data["fat_100g"])
-                        saturated_fat = int(nutritional_data["saturated-fat_100g"])
-                        carbohydrates = int(nutritional_data["carbohydrates_100g"])
-                        sugars = int(nutritional_data["sugars_100g"])
-                        proteins = int(nutritional_data["proteins_100g"])
-                        salt = int(nutritional_data["salt_100g"])
-                        sodium = int(nutritional_data["sodium_100g"])
-     
-                        #Food
-                        name = product["product_name_fr"]
-                        nutriscore = product["nutrition_grades"]
-                        image = product["image_url"]
-                        link = product["url"]
+                try:
+                    name = product["product_name_fr"]
+                except:
+                    continue
+                else:
+                    if len(Food.objects.filter(name=name)) == 0:
+                        try:
+                            #Food
+                            nutriscore = product["nutrition_grades"]
+                            image = product["image_url"]
+                            link = product["url"]
 
-                        with transaction.atomic():
-                            #Save nutritional information
-                            new_row = NutritionalInformation.objects.create(calories=calories,
-                                    fat=fat, saturated_fat=saturated_fat, carbohydrates=carbohydrates, sugars=sugars,
-                                    proteins=proteins, salt=salt, sodium=sodium)
+                            #Nutritional information
+                            nutritional_data = product["nutriments"]
 
-                            #Save food
-                            new_food = Food.objects.create(name=name, id_category= new_category,
-                                    nutriscore=nutriscore, id_nutritional_information= new_row,
-                                    image=image, link=link)
-                            print("""{} saved""".format(name))
-                    except:
-                        continue
+                            calories = math.ceil(int(nutritional_data["energy_100g"])*0.239006)
+                            fat = int(nutritional_data["fat_100g"])
+                            saturated_fat = int(nutritional_data["saturated-fat_100g"])
+                            carbohydrates = int(nutritional_data["carbohydrates_100g"])
+                            sugars = int(nutritional_data["sugars_100g"])
+                            proteins = int(nutritional_data["proteins_100g"])
+                            salt = int(nutritional_data["salt_100g"])
+                            sodium = int(nutritional_data["sodium_100g"])
 
-#import toutes les données
+                            with transaction.atomic():
+                                #Save nutritional information
+                                new_row = NutritionalInformation.objects.create(calories=calories,
+                                        fat=fat, saturated_fat=saturated_fat, carbohydrates=carbohydrates, sugars=sugars,
+                                        proteins=proteins, salt=salt, sodium=sodium)
+
+                                #Save food
+                                new_food = Food.objects.create(name=name, id_category= new_category,
+                                        nutriscore=nutriscore, id_nutritional_information= new_row,
+                                        image=image, link=link)
+                                print("""{} saved""".format(name))
+                        except:
+                            continue
+
