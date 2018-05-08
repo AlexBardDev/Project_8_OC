@@ -18,6 +18,7 @@ URL_ALL_CATEGORIES = "https://fr.openfoodfacts.org/categories.json"
 URL_CATEGORY = "https://fr.openfoodfacts.org/categorie/{}/{}.json"
 
 categories = requests.get(URL_ALL_CATEGORIES).json()["tags"]
+
 for i in range(100):
     #Save a category
     name_category = categories[i]["url"].split("/")[-1]
