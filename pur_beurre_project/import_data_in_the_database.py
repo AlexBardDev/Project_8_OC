@@ -39,7 +39,7 @@ for i in range(100):
         print("""{} saved.""".format(name_category))
 
     #For the 3 first pages of each category
-    for k in range(1, 4):
+    for k in range(1, 6):
         try:
             data = requests.get(URL_CATEGORY.format(name_category, k)).json()["products"]
         except:
