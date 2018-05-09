@@ -24,6 +24,29 @@ nav a span
 	color: black;
 }
 
+#about
+{
+	background: url('images/image_home.jpeg') no-repeat fixed top center;
+}
+
+section form input
+{
+	max-width: 400px;
+}
+
+.btn-outline-primary
+{
+	background-color: rgb(196, 85, 37);
+	color: rgb(134, 235, 230);
+	border-radius: 5px;
+}
+
+.btn-outline-primary:hover
+{
+	background-color: rgb(134, 235, 230);
+	color: rgb(196, 85, 37);
+}
+
 footer
 {
 	border-top: 2px black solid;
