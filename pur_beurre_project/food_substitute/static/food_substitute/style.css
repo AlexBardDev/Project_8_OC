@@ -29,9 +29,17 @@ nav a span
 	background: url('images/image_home.jpeg') no-repeat fixed top center;
 }
 
-section form input
+#about h1, #about h2
 {
-	max-width: 400px;
+	color: white;
+	text-shadow: 3px 3px 3px black;
+	margin-bottom: 20px;
+}
+
+section form
+{
+	max-width: 500px;
+	margin: auto;
 }
 
 .btn-outline-primary
@@ -45,6 +53,22 @@ section form input
 {
 	background-color: rgb(134, 235, 230);
 	color: rgb(196, 85, 37);
+}
+
+#services
+{
+	background-color: rgb( 196, 85, 37 );
+	color: white;
+}
+
+.quote
+{
+	font-style: italic;
+}
+
+#contact
+{
+	background-color: rgb(134, 235, 230);
 }
 
 footer
