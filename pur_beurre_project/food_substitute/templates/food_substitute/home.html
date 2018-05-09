@@ -10,8 +10,9 @@
           <div class="col-lg-8 mx-auto text-center">
             <h1 class="section-heading">Du gras, oui, mais de qualité !<h1>
             <h2 class="">Trouvez un produit de substitution pour ceux que vous consommez tous les jours.</h2>
-	    <form class="input-group mb-3">
-	      <input type="search" class="form-control" placeholder="Produit"/>
+	    <form class="input-group mb-3" action="{% url "home" %}" method="post">
+	      {% csrf_token %}
+	      <input type="search" name="research" class="form-control" placeholder="Produit"/>
 	      <div class="input-group-append">
 	        <button class="btn btn-outline-primary" type="button">Chercher</button>
 	      </div>
