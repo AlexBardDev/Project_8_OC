@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
 
     <!-- Specifi CSS for this project -->
-    <link href="{% static 'food_substitute/style.css' %}">
+    <link rel="stylesheet" href="{% static 'food_substitute/style.css' %}">
 
   </head>
 
@@ -38,7 +38,7 @@
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
 	  <img src="{% static 'food_substitute/images/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="logo"/>
-	  Pur Beurre
+	  <span>Pur Beurre</span>
 	</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -57,7 +57,7 @@
  	      <a class="nav-link js-scroll-trigger" href="#"><img src="{% static 'food_substitute/images/image_menu.png' %}" width="30" height="30" class="d-inline-block align-top" alt="carotte" /></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact"><span class="fas fa-sign-out-alt"></span></a>
+              <a class="nav-link js-scroll-trigger" href="#"><span class="fas fa-sign-out-alt"></span></a>
             </li>
           </ul>
         </div>

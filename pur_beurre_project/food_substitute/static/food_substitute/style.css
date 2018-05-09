@@ -1,9 +1,33 @@
-h1
+body
+{
+	font-family: "Scope One", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6
 {
 	font-family: "Open Sans", sans-serif;	
 }
 
-body
+nav form
 {
-	font-family: "Scope One", sans-serif;
+	margin-right: 20px;
+}
+
+#mainNav, #mainNav:first-child
+{
+	border-bottom: 1px black solid;
+	background-color: rgb(232, 167, 93);
+}
+
+nav a span
+{
+	color: black;
+}
+
+footer
+{
+	border-top: 2px black solid;
+	padding-top: 20px;
+	background-color: rgb(52, 90, 97);
+	color: white;
 }
