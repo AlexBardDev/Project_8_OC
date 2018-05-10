@@ -10,6 +10,23 @@
 	</section>
 	
 	<section class="container-fluid" id="substitute">
-		<h3 class="text-center">Vous pouvez remplacer cet aliment par :</h3>
+		{% if list_substitute %}
+			<h3 class="text-center">Vous pouvez remplacer cet aliment par :</h3>
+			<div class="row">
+				{% for product in list_substitute %}
+					<div class="col-md-4 text-center">
+						<p class="nutriscore">{{ product.nutriscore|capfirst }}</p>
+						<a href="#">
+							<img src="{{ product.image }}" alt="image product" width="200" height="200"/>
+							<p>{{ product.name }}</p>
+						</a>
+						<p><span class="far fa-save"></span> Sauvegarder</p>
+					</div>
+				{% endfor %}
+			</div>
+		{% else %}
+			<h3 class="text-center">Désolé, nous n'avons pas trouvé de substitut plus sain</h3>
+			<a class="text-center" href="#">Voir la page complète de l'aliment</a>
+		{% endif %}
 	</section>
 {% endblock %}

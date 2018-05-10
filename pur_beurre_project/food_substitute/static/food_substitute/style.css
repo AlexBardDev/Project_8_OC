@@ -93,6 +93,47 @@ section form
 	border-radius: 5px;
 }
 
+#substitute
+{
+	background-color: rgb(196, 85, 37);
+	color: white;
+}
+
+#substitute h3
+{
+	margin-bottom: 50px;
+}
+
+.nutriscore
+{
+	background-color: white;
+	color: black;
+	font-weight: bold;
+	font-size: 3em;
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	position: relative;
+	top: 50px;
+	left: 270px;
+}
+
+#substitute a, #substitute a:visited
+{
+	color: rgb(134, 235, 230);
+	font-weight: bold;
+}
+
+#substitute a:hover
+{
+	font-style: italic;
+}
+
+#substitute a p
+{
+	margin-top: 10px;
+}
+
 footer
 {
 	border-top: 2px black solid;
