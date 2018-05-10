@@ -134,6 +134,24 @@ section form
 	margin-top: 10px;
 }
 
+#not_found
+{
+	background-color: rgb(222, 148, 64);
+	height: 600px;
+}
+
+#not_found span
+{
+	font-style: italic;
+	text-decoration: underline;
+}
+
+#not_found p
+{
+	margin-top: 40px;
+	font-size: 1.2em;
+}
+
 footer
 {
 	border-top: 2px black solid;
