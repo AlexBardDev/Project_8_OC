@@ -118,13 +118,13 @@ section form
 	left: 270px;
 }
 
-#substitute a, #substitute a:visited
+#substitute a, #substitute a:visited, #suggestions a, #suggestions a:visited
 {
 	color: rgb(134, 235, 230);
 	font-weight: bold;
 }
 
-#substitute a:hover
+#substitute a:hover, #suggestions a:hover
 {
 	font-style: italic;
 }
@@ -134,13 +134,13 @@ section form
 	margin-top: 10px;
 }
 
-#not_found
+#not_found, #suggestions
 {
 	background-color: rgb(222, 148, 64);
-	height: 600px;
+	min-height: 600px;
 }
 
-#not_found span
+#not_found span, #suggestions span
 {
 	font-style: italic;
 	text-decoration: underline;
@@ -150,6 +150,11 @@ section form
 {
 	margin-top: 40px;
 	font-size: 1.2em;
+}
+
+#suggestions h2
+{
+	margin-bottom: 20px;
 }
 
 footer

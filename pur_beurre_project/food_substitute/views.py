@@ -1,3 +1,5 @@
+import re
+
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Food
 
@@ -16,16 +18,17 @@ def search(request, input_user):
     result = Food.objects.filter(name=input_user)
 
     if len(result) == 0:
-        context = {"product":input_user}
-        return render(request, "food_substitute/not_found.html", context)
+        list_suggestions = [food for food in Food.objects.all() if re.search(input_user, food.name)]
+        if len(list_suggestions) != 0:
+            context = {"product": input_user, "list_suggestions":list_suggestions}
+            return render(request, "food_substitute/suggestion.html", context)
+        else:
+            context = {"product":input_user}
+            return render(request, "food_substitute/not_found.html", context)
     else:
         result = result[0]
-        list_substitute = []
-        list_same_catgeory = Food.objects.filter(id_category=result.id_category)
-        for food in list_same_catgeory:
-            if ord(food.nutriscore) < ord(result.nutriscore):
-                list_substitute.append(food)
-
+        list_substitute = [food for food in Food.objects.filter(id_category=result.id_category) if ord(food.nutriscore) < ord(result.nutriscore)]
+        
         context = {"product":result, "list_substitute": list_substitute}
 
         return render(request, "food_substitute/search.html", context)
