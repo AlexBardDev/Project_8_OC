@@ -71,6 +71,28 @@ section form
 	background-color: rgb(134, 235, 230);
 }
 
+#product
+{
+	background-color: black;
+	height: 350px;
+}
+
+#product div
+{
+	height: 200px;
+}
+
+#product div p
+{
+	position: absolute;
+	top: 128px;
+	left: 510px;
+	padding: 5px;
+	font-weight: bold;
+	background-color: rgb(250,250,250);
+	border-radius: 5px;
+}
+
 footer
 {
 	border-top: 2px black solid;

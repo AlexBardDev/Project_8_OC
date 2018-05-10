@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from .models import Food
 
 def home(request):
     """This function returns the home of the web site"""
@@ -12,7 +13,9 @@ def home(request):
 def search(request, input_user):
     """This function searches a healthier substitute and shows the results."""
 
-    data = {"clé1": input_user}
+    result = Food.objects.filter(name=input_user)[0]
 
-    return render(request, "food_substitute/search.html", data)
+    context = {"product":result}
+
+    return render(request, "food_substitute/search.html", context)
 

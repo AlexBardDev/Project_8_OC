@@ -3,7 +3,13 @@
 {% block title_page %}Rechercher un substitut plus sain{% endblock %}
 
 {% block content %}
-  <section>
-    {{ clé1 }}
-  </section>
+	<section id="product">
+		<div style="background: url('{{product.image}}') no-repeat center">
+				<p>{{ product.name }}</p>
+		</div>
+	</section>
+	
+	<section class="container-fluid" id="substitute">
+		<h3 class="text-center">Vous pouvez remplacer cet aliment par :</h3>
+	</section>
 {% endblock %}
