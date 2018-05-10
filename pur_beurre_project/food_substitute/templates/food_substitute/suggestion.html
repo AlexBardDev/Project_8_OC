@@ -8,7 +8,7 @@
 		<h2 class="text-center">Voulez-vous dire :</h2>
 		<div class="row">
 			{% for suggestion in list_suggestions %}
-				<div class="col-md-4">
+				<div class="col-md-4 text-center">
 					<a href="{% url 'search' suggestion.name %}">{{ suggestion.name }}</a>
 				</div>
 			{% endfor %}
