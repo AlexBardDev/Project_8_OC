@@ -1,0 +1,22 @@
+{% extends "food_substitute/base.html" %}
+
+{% block title_page %}Informations produits{% endblock %}
+
+{% block content %}
+	{% include 'food_substitute/product.html' %}
+
+	<section class="container-fluid" id="display">
+		<div class="row">
+			<div class="col-md-6 text-center">
+				<h2>Nutriscore</h2>
+				<p>A B C D E</p>
+			</div>
+			
+			<div class="col-md-6 text-center">
+				<h2>Repères nutritionnels pour 100g</h2>
+				<p>Blablabla</p>
+			</div>
+       		</div>
+		<a href="{{ product.link }}" target="_blank">Voir la fiche complète d'OpenFoodFacts</a>
+	</section>
+{% endblock %}

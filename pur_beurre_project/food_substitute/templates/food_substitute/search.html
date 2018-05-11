@@ -3,11 +3,7 @@
 {% block title_page %}Rechercher un substitut plus sain{% endblock %}
 
 {% block content %}
-	<section id="product">
-		<div style="background: url('{{product.image}}') no-repeat center">
-				<p>{{ product.name }}</p>
-		</div>
-	</section>
+	{% include 'food_substitute/product.html' %}
 	
 	<section class="container-fluid" id="substitute">
 		{% if list_substitute %}

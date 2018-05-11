@@ -1,7 +1,7 @@
 import re
 
 from django.shortcuts import render, redirect
-from .models import Food
+from .models import Food, NutritionalInformation
 
 def home(request):
     """This function returns the home of the web site."""
@@ -41,4 +41,4 @@ def display(request, name_product):
 
     context = {"product": product}
     
-    return render(request, "food_substitute/product.html", context)
+    return render(request, "food_substitute/display.html", context)
