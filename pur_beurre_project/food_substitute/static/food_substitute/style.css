@@ -118,13 +118,13 @@ section form
 	left: 270px;
 }
 
-#substitute a, #substitute a:visited, #suggestions a, #suggestions a:visited
+#substitute a, #substitute a:visited, #suggestions a, #suggestions a:visited, #display a, #display a:visited
 {
 	color: rgb(134, 235, 230);
 	font-weight: bold;
 }
 
-#substitute a:hover, #suggestions a:hover
+#substitute a:hover, #suggestions a:hover, #display a:hover
 {
 	font-style: italic;
 }
@@ -155,6 +155,32 @@ section form
 #suggestions h2
 {
 	margin-bottom: 20px;
+}
+
+#display
+{
+	background-color: rgb(196, 85, 37);
+}
+
+#display h2
+{
+	margin-bottom: 30px;
+}
+
+#display p
+{
+	font-size: 1.5em;
+}
+
+#display .nutri
+{
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+#display .dont
+{
+	margin-left: 50px;
 }
 
 footer

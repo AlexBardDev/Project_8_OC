@@ -39,6 +39,6 @@ def display(request, name_product):
     
     product = Food.objects.filter(name=name_product)[0]
 
-    context = {"product": product}
+    context = {"product": product, "list_letters":["A", "B", "C", "D", "E"]}
     
     return render(request, "food_substitute/display.html", context)

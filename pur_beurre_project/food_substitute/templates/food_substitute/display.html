@@ -9,14 +9,31 @@
 		<div class="row">
 			<div class="col-md-6 text-center">
 				<h2>Nutriscore</h2>
-				<p>A B C D E</p>
+				<p>
+					{% for letter in list_letters %}
+						{% if letter|lower == product.nutriscore %}
+							<span class="nutri">{{ letter }}</span>	
+						{% else %}
+							<span>{{ letter }}</span>
+						{% endif %}
+					{% endfor %}
+				</p>
 			</div>
 			
-			<div class="col-md-6 text-center">
+			<div class="col-md-6">
 				<h2>Repères nutritionnels pour 100g</h2>
-				<p>Blablabla</p>
+				<p>Calories : {{ product.id_nutritional_information.calories }}</p>
+				<p>Graisses : {{ product.id_nutritional_information.fat }}</p>
+				<p class="dont">Dont saturés : {{ product.id_nutritional_information.saturated_fat }}</p>
+				<p>Glucides : {{ product.id_nutritional_information.carbohydrates }}</p>
+				<p class="dont">Dont sucres : {{ product.id_nutritional_information.sugars }}</p>
+				<p>Protéins : {{ product.id_nutritional_information.proteins }}</p>
+				<p>Sel : {{ product.id_nutritional_information.salt }}</p>
+				<p class="dont">Dont Sodium : {{ product.id_nutritional_information.sodium }}</p>
 			</div>
        		</div>
-		<a href="{{ product.link }}" target="_blank">Voir la fiche complète d'OpenFoodFacts</a>
+		<div class="row">
+			<a class="text-center" href="{{ product.link }}" target="_blank">Voir la fiche complète d'OpenFoodFacts</a>
+		</div>
 	</section>
 {% endblock %}
