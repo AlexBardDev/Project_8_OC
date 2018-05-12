@@ -44,4 +44,21 @@ def display(request, name_product):
     
     return render(request, "food_substitute/display.html", context)
 
-#new_user = User.objects.create_user('pseudo', 'email', 'mdp')
+def login(request):
+    """This function allows the connexion of the users."""
+
+    if request.method == "POST":
+        #email = request.POST.get("email")
+        #password = request.POST.get("password")
+        pass
+    else:
+        return render(request, "food_substitute/login.html")
+    
+def create_account(request):
+    """This functions creates a user account."""
+
+    if request.method == "POST":
+        pass
+    else:
+        return render(request, "food_substitute/account.html")
+
