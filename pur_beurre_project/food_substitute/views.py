@@ -2,11 +2,12 @@ import re
 
 from django.shortcuts import render, redirect
 from .models import Food, NutritionalInformation
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 def home(request):
-    """This function returns the home of the web site."""
+    """This view returns the home of the web site."""
     
     if request.method == "POST":
         input_user = request.POST.get("research")
@@ -15,7 +16,7 @@ def home(request):
         return render(request, "food_substitute/home.html")
 
 def search(request, input_user):
-    """This function searches a healthier substitute and shows the results."""
+    """This view searches a healthier substitute and shows the results."""
 
     result = Food.objects.filter(name=input_user)
 
@@ -36,7 +37,7 @@ def search(request, input_user):
         return render(request, "food_substitute/search.html", context)
 
 def display(request, name_product):
-    """This function displays the information about a selected product."""
+    """This view displays the information about a selected product."""
 
     
     product = Food.objects.filter(name=name_product)[0]
@@ -46,7 +47,7 @@ def display(request, name_product):
     return render(request, "food_substitute/display.html", context)
 
 def login_user(request):
-    """This function allows the connexion of the users."""
+    """This view allows the connexion of the users."""
 
     if request.method == "POST":
         email = request.POST.get("email")
@@ -60,7 +61,7 @@ def login_user(request):
         return render(request, "food_substitute/login.html")
     
 def create_account(request):
-    """This functions creates a user account."""
+    """This view creates a user account."""
 
     if request.method == "POST":
         email = request.POST.get("email")
@@ -75,4 +76,14 @@ def create_account(request):
         return render(request, "food_substitute/account.html")
 
 def logout_user(request):
-    pass
+    """This view logs out a user."""
+
+    logout(request)
+
+    return redirect("home")
+
+@login_required
+def bookmarks_user(request):
+    """This view returns all the saved substitutes of the user."""
+
+    return render(request, "food_substitute/bookmarks.html")

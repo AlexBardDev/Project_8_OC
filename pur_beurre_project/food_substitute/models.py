@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     """This class is the 'Category' table in the database. It stores all the
@@ -31,9 +30,3 @@ class Food(models.Model):
     id_nutritional_information = models.ForeignKey(NutritionalInformation, on_delete=models.CASCADE)
     image = models.URLField()
     link = models.URLField()
-
-class Bookmarks(models.Model):
-    """This class is a join table called 'Bookmarks' in the database. It stores
-    which user has saved which food."""
-
-    pass

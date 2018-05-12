@@ -1,0 +1,15 @@
+{% extends "food_substitute/base.html" %}
+
+{% block title_page %}Mes substituts enregistrés{% endblock %}
+
+{% block content %}
+	<section>
+		{% if list_bookmarks %}
+			{% for bookmark in list_bookmarks %}
+				<a href="{% url 'product' bookmark.id_product.name %}">{{ bookmark.id_product.name }}</a>
+			{% endfor %}
+		{% else %}
+			<h2>Vous n'avez pas encore de substituts enregistrés.</h2>
+		{% endif %}
+	</section>
+{% endblock %}
