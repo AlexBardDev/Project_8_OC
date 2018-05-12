@@ -45,7 +45,7 @@ def display(request, name_product):
     
     return render(request, "food_substitute/display.html", context)
 
-def login(request):
+def login_user(request):
     """This function allows the connexion of the users."""
 
     if request.method == "POST":
@@ -54,9 +54,8 @@ def login(request):
         
         user = authenticate(username=email, password=password)
         if user:
-            login(request)
+            login(request, user)
             return redirect("home")
-
     else:
         return render(request, "food_substitute/login.html")
     
@@ -67,6 +66,13 @@ def create_account(request):
         email = request.POST.get("email")
         password = request.POST.get("password")
         new_user = User.objects.create_user(email, email, password)
+        
+        user = authenticate(username=email, password=password)
+        if user:
+            login(request, user)
+        return redirect("home")
     else:
         return render(request, "food_substitute/account.html")
 
+def logout_user(request):
+    pass
