@@ -2,6 +2,7 @@ import re
 
 from django.shortcuts import render, redirect
 from .models import Food, NutritionalInformation
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
 def home(request):
@@ -48,9 +49,14 @@ def login(request):
     """This function allows the connexion of the users."""
 
     if request.method == "POST":
-        #email = request.POST.get("email")
-        #password = request.POST.get("password")
-        pass
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        
+        user = authenticate(username=email, password=password)
+        if user:
+            login(request)
+            return redirect("home")
+
     else:
         return render(request, "food_substitute/login.html")
     
@@ -58,7 +64,9 @@ def create_account(request):
     """This functions creates a user account."""
 
     if request.method == "POST":
-        pass
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        new_user = User.objects.create_user(email, email, password)
     else:
         return render(request, "food_substitute/account.html")
 
