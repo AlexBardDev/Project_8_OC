@@ -2,6 +2,7 @@ import re
 
 from django.shortcuts import render, redirect
 from .models import Food, NutritionalInformation
+from django.contrib.auth.models import User
 
 def home(request):
     """This function returns the home of the web site."""
@@ -42,3 +43,5 @@ def display(request, name_product):
     context = {"product": product, "list_letters":["A", "B", "C", "D", "E"]}
     
     return render(request, "food_substitute/display.html", context)
+
+#new_user = User.objects.create_user('pseudo', 'email', 'mdp')

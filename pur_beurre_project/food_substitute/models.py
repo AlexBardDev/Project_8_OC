@@ -32,12 +32,6 @@ class Food(models.Model):
     image = models.URLField()
     link = models.URLField()
 
-class User(models.Model):
-    """This is the 'User' table in the database. It stores all the information
-    about the users."""
-
-    pass
-
 class Bookmarks(models.Model):
     """This class is a join table called 'Bookmarks' in the database. It stores
     which user has saved which food."""
