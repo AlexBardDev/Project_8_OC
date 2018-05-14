@@ -87,3 +87,14 @@ def bookmarks_user(request):
     """This view returns all the saved substitutes of the user."""
 
     return render(request, "food_substitute/bookmarks.html")
+
+def legal_notices(request):
+    """This view returns the legal notices page."""
+
+    return render(request, "food_substitute/legal_notices.html")
+
+def contact(request):
+    """This view returns the contact page."""
+
+    return render(request, "food_substitute/contact.html")
+

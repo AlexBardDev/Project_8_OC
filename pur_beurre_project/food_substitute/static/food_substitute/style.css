@@ -242,7 +242,16 @@ section form
 footer
 {
 	border-top: 2px black solid;
-	padding-top: 20px;
 	background-color: rgb(52, 90, 97);
+}
+
+footer a, footer a:visited
+{
+	color: white;
+	padding: 20px;
+}
+
+footer a:hover
+{
 	color: white;
 }
