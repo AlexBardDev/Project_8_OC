@@ -3,12 +3,12 @@
 {% block title_page %}Connexion{% endblock %}
 
 {% block content %}
-	<section>
+	<section id="login">
 		{% if user.is_authenticated %}
-			<h2>Vous êtes déjà connecté</h2>
+		<h2 class="text-center">Vous êtes déjà connecté en tant que <em>{{ user.username }}</em></h2>
 		{% else %}
-			<h2>Vous n'êtes pas connecté</h2>
-			<p>Vous pouvez vous connecter en complétant le formulaire ci-dessous ou <a href="{% url 'create_account' %}">vous créer un compte si ce n'est pas
+			<h2 class="text-center">Vous n'êtes pas connecté</h2>
+			<p class="text-center">Vous pouvez vous connecter en complétant le formulaire ci-dessous ou <a href="{% url 'create_account' %}">vous créer un compte si ce n'est pas
 			déjà fait</a></p>
 			<form action="{% url 'login' %}" method="POST">
 				{% csrf_token %}

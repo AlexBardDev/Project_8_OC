@@ -118,13 +118,13 @@ section form
 	left: 270px;
 }
 
-#substitute a, #substitute a:visited, #suggestions a, #suggestions a:visited, #display a, #display a:visited
+#substitute a, #substitute a:visited, #suggestions a, #suggestions a:visited, #display a, #display a:visited, #login a
 {
 	color: rgb(134, 235, 230);
 	font-weight: bold;
 }
 
-#substitute a:hover, #suggestions a:hover, #display a:hover
+#substitute a:hover, #suggestions a:hover, #display a:hover, #login a:hover
 {
 	font-style: italic;
 }
@@ -196,6 +196,47 @@ section form
 	background-color: grey;
 	border-radius: 20px;
 	padding: 10px;
+}
+
+#login, #new_account
+{
+	background-color: rgb(196, 85, 37);
+	min-height: 600px;
+}
+
+#login h2, #new_account h2
+{
+	margin-bottom: 50px;
+}
+
+#login em
+{
+	color: white;
+}
+
+#login p
+{
+  color: white;	
+}
+
+#login form, #new_account form
+{
+	color:white;
+}
+
+#login input[type="submit"], #new_account input[type="submit"]
+{
+	background-color: rgb(52, 90, 97);
+	color: rgb(232, 167, 93);
+	border: 1px black solid;
+	border-radius: 10px;
+	font-weight: bold;
+}
+
+#login input[type="submit"]:hover, #new_account input[type="submit"]:hover
+{
+	background-color: rgb(232, 167, 93);rgb(52, 90, 97);
+	color: rgb(52, 90, 97);
 }
 
 footer
