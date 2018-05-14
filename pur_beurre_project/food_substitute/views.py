@@ -93,8 +93,3 @@ def legal_notices(request):
 
     return render(request, "food_substitute/legal_notices.html")
 
-def contact(request):
-    """This view returns the contact page."""
-
-    return render(request, "food_substitute/contact.html")
-
