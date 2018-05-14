@@ -118,13 +118,13 @@ section form
 	left: 270px;
 }
 
-#substitute a, #substitute a:visited, #suggestions a, #suggestions a:visited, #display a, #display a:visited, #login a, #login a:visited, #legal_notices a, #legal_notices a:visited
+#substitute a, #substitute a:visited, #suggestions a, #suggestions a:visited, #display a, #display a:visited, #login a, #login a:visited, #legal_notices a, #legal_notices a:visited, #bookmarks a, #bookmarks a:visited
 {
 	color: rgb(134, 235, 230);
 	font-weight: bold;
 }
 
-#substitute a:hover, #suggestions a:hover, #display a:hover, #login a:hover, #legal_notices a:hover
+#substitute a:hover, #suggestions a:hover, #display a:hover, #login a:hover, #legal_notices a:hover, #bookmarks a:hover
 {
 	font-style: italic;
 }
@@ -134,7 +134,7 @@ section form
 	margin-top: 10px;
 }
 
-#not_found, #suggestions
+#not_found, #suggestions, #bookmarks
 {
 	background-color: rgb(222, 148, 64);
 	min-height: 600px;
@@ -256,6 +256,16 @@ section form
 {
 	margin-left: 250px;
 	color: white;
+}
+
+#bookmarks p
+{
+	margin-top: 15px;
+}
+
+#bookmarks div[class*="col-md-4"]
+{
+	margin-top: 50px;
 }
 
 footer

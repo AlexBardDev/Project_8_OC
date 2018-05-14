@@ -5,11 +5,19 @@
 {% block content %}
 	<section id="bookmarks">
 		{% if list_bookmarks %}
+			<h2 class="text-center">Vos substituts déjà enregistrés :</h2>
+			<div class="row">
 			{% for bookmark in list_bookmarks %}
-				<a href="{% url 'display' bookmark.id_product.name %}">{{ bookmark.id_product.name }}</a>
+				<div class="col-md-4 text-center">
+					<a href="{% url 'display' bookmark.id_product.name %}">
+						<img src="{{ bookmark.id_product.image }}" alt="image product" width="200" height="200"/>
+						<p>{{ bookmark.id_product.name }}</p>
+					</a>
+				</div>
 			{% endfor %}
+			</div>
 		{% else %}
-			<h2>Vous n'avez pas encore de substituts enregistrés.</h2>
+			<h2 class="text-center">Vous n'avez pas encore de substituts enregistrés.</h2>
 		{% endif %}
 	</section>
 {% endblock %}
