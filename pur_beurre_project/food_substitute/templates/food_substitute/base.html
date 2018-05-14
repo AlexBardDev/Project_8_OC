@@ -62,7 +62,7 @@
 	      {% endif %}
             </li>
             <li class="nav-item">
-		    <a class="nav-link js-scroll-trigger" href="{% url 'bookmarks' %}" data-toggle="tooltip" data-placement="bottom" title="Mes substituts"><img src="{% static 'food_substitute/images/image_menu.png' %}" width="30" height="30" class="d-inline-block align-top" alt="carotte" /></a>
+		    <a class="nav-link js-scroll-trigger" href="{% url 'bookmark' %}" data-toggle="tooltip" data-placement="bottom" title="Mes substituts"><img src="{% static 'food_substitute/images/image_menu.png' %}" width="30" height="30" class="d-inline-block align-top" alt="carotte" /></a>
             </li>
 	    {% if user.is_authenticated %}
             	<li class="nav-item">

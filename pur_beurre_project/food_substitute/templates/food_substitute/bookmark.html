@@ -3,10 +3,10 @@
 {% block title_page %}Mes substituts enregistrés{% endblock %}
 
 {% block content %}
-	<section>
+	<section id="bookmarks">
 		{% if list_bookmarks %}
 			{% for bookmark in list_bookmarks %}
-				<a href="{% url 'product' bookmark.id_product.name %}">{{ bookmark.id_product.name }}</a>
+				<a href="{% url 'display' bookmark.id_product.name %}">{{ bookmark.id_product.name }}</a>
 			{% endfor %}
 		{% else %}
 			<h2>Vous n'avez pas encore de substituts enregistrés.</h2>

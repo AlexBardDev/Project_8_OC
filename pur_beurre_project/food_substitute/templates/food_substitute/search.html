@@ -16,7 +16,7 @@
 							<img src="{{ product.image }}" alt="image product" width="200" height="200"/>
 							<p>{{ product.name }}</p>
 						</a>
-						<p><span class="far fa-save"></span> Sauvegarder</p>
+						<p><span class="far fa-save"></span> <a href="{% url 'save_product' product.name %}">Sauvegarder</a></p>
 					</div>
 				{% endfor %}
 			</div>

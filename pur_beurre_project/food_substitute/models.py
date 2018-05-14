@@ -30,3 +30,11 @@ class Food(models.Model):
     id_nutritional_information = models.ForeignKey(NutritionalInformation, on_delete=models.CASCADE)
     image = models.URLField()
     link = models.URLField()
+
+class Bookmark(models.Model):
+    """This class is the 'Bookmark' table in the database. It stores all the
+    bookmarks of the users."""
+
+    id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    id_product = models.ForeignKey(Food, on_delete=models.CASCADE)
+

@@ -1,7 +1,7 @@
 import re
 
 from django.shortcuts import render, redirect
-from .models import Food, NutritionalInformation
+from .models import Food, NutritionalInformation, Bookmark
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -83,10 +83,25 @@ def logout_user(request):
     return redirect("home")
 
 @login_required
-def bookmarks_user(request):
+def bookmark_user(request):
     """This view returns all the saved substitutes of the user."""
 
-    return render(request, "food_substitute/bookmarks.html")
+    list_bookmarks = Bookmark.objects.filter(id_user=request.user.id)
+
+    context = {"list_bookmarks": list_bookmarks}
+
+    return render(request, "food_substitute/bookmark.html", context)
+
+@login_required
+def save_product(request, name_product):
+    """This view saves a new bookmark for the current user."""
+
+    product = Food.objects.filter(name=name_product)[0]
+    user = request.user
+
+    Bookmark.objects.create(id_user=user, id_product=product)
+
+    return redirect("home")
 
 def legal_notices(request):
     """This view returns the legal notices page."""
