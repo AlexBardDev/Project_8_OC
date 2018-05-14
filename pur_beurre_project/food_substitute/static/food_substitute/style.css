@@ -118,13 +118,13 @@ section form
 	left: 270px;
 }
 
-#substitute a, #substitute a:visited, #suggestions a, #suggestions a:visited, #display a, #display a:visited, #login a
+#substitute a, #substitute a:visited, #suggestions a, #suggestions a:visited, #display a, #display a:visited, #login a, #login a:visited, #legal_notices a, #legal_notices a:visited
 {
 	color: rgb(134, 235, 230);
 	font-weight: bold;
 }
 
-#substitute a:hover, #suggestions a:hover, #display a:hover, #login a:hover
+#substitute a:hover, #suggestions a:hover, #display a:hover, #login a:hover, #legal_notices a:hover
 {
 	font-style: italic;
 }
@@ -237,6 +237,25 @@ section form
 {
 	background-color: rgb(232, 167, 93);rgb(52, 90, 97);
 	color: rgb(52, 90, 97);
+}
+
+#legal_notices
+{
+	background-color: rgb(196, 85, 37);
+}
+
+#legal_notices h4
+{
+	text-decoration: underline;
+	margin-left: 200px;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+#legal_notices p
+{
+	margin-left: 250px;
+	color: white;
 }
 
 footer
