@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
 
 def home(request):
     """This view returns the home of the web site."""
@@ -55,13 +56,24 @@ def login_user(request):
     if request.method == "POST":
         email = request.POST.get("email")
         password = request.POST.get("password")
-        
+        next_url = request.POST.get("next")    
+
         user = authenticate(username=email, password=password)
         if user:
             login(request, user)
+
+        if next_url == "/bookmark/":
+            return redirect("bookmark")
+        elif "/search/" in next_url:
+            return HttpResponseRedirect(next_url)
+        else:
             return redirect("home")
     else:
-        return render(request, "food_substitute/login.html")
+        next_url = request.GET.get("next")
+        if next_url is not None and "/save_product/" in next_url:
+            next_url = request.META.get('HTTP_REFERER')
+
+        return render(request, "food_substitute/login.html", {"next": next_url})
     
 def create_account(request):
     """This view creates a user account."""
@@ -104,7 +116,7 @@ def save_product(request, name_product):
 
     Bookmark.objects.create(id_user=user, id_product=product)
 
-    return redirect("home")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def legal_notices(request):
     """This view returns the legal notices page."""
