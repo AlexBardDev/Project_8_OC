@@ -5,6 +5,7 @@ from .models import Food, NutritionalInformation, Bookmark
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 def home(request):
     """This view returns the home of the web site."""
@@ -31,8 +32,10 @@ def search(request, input_user):
     else:
         result = result[0]
         list_substitute = [food for food in Food.objects.filter(id_category=result.id_category) if ord(food.nutriscore) < ord(result.nutriscore)]
-        
-        context = {"product":result, "list_substitute": list_substitute}
+        paginator = Paginator(list_substitute, 6)
+        page = request.GET.get('page')
+        list_page_substitute = paginator.get_page(page)
+        context = {"product":result, "list_substitute": list_page_substitute}
 
         return render(request, "food_substitute/search.html", context)
 

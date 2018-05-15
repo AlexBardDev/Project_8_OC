@@ -134,6 +134,25 @@ section form
 	margin-top: 10px;
 }
 
+.step-links
+{
+	width: 300px;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.step-links a, .page_number
+{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.page_number
+{
+	color: black;
+	font-weight: bold;
+}
+
 #not_found, #suggestions, #bookmarks
 {
 	background-color: rgb(222, 148, 64);
