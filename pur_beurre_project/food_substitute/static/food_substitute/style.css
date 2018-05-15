@@ -136,15 +136,10 @@ section form
 
 .step-links
 {
-	width: 300px;
+	width: 200px;
 	margin: auto;
 	margin-top: 50px;
-}
-
-.step-links a, .page_number
-{
-	margin-right: 10px;
-	margin-left: 10px;
+	text-align: center;
 }
 
 .page_number

@@ -51,6 +51,8 @@ for i in range(100):
             for product in data:
                 try:
                     name = product["product_name_fr"]
+                    if "/" in name:
+                        name = " ".join(name.split("/"))
                 except:
                     continue
                 else:

@@ -23,7 +23,7 @@
 			<div class="pagination">
 			    <span class="step-links">
 			        {% if list_substitute.has_previous %}
-				<a href="?page={{ list_substitute.previous_page_number }}"><span class="fas fa-angle-double-left"></span> previous</a>
+				<a href="?page={{ list_substitute.previous_page_number }}"><span class="fas fa-angle-double-left"></span></a>
 				{% endif %}
 
 				<span class="page_number">
@@ -31,7 +31,7 @@
 				</span>
 
 				{% if list_substitute.has_next %}
-					<a href="?page={{ list_substitute.next_page_number }}">next <span class="fas fa-angle-double-right"></span></a>
+					<a href="?page={{ list_substitute.next_page_number }}"><span class="fas fa-angle-double-right"></span></a>
 				{% endif %}
 			    </span>
 			</div>	
