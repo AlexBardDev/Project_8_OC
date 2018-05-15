@@ -26,9 +26,11 @@
 				<a href="?page={{ list_substitute.previous_page_number }}"><span class="fas fa-angle-double-left"></span></a>
 				{% endif %}
 
-				<span class="page_number">
-					Page {{ list_substitute.number }} of {{ list_substitute.paginator.num_pages }}
-				</span>
+				{% if list_substitute.has_previous or list_substitute.has_next %}
+					<span class="page_number">
+						Page {{ list_substitute.number }} of {{ list_substitute.paginator.num_pages }}
+					</span>
+				{% endif %}
 
 				{% if list_substitute.has_next %}
 					<a href="?page={{ list_substitute.next_page_number }}"><span class="fas fa-angle-double-right"></span></a>

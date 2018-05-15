@@ -33,10 +33,12 @@ def search(request, input_user):
     else:
         result = result[0]
         list_substitute = [food for food in Food.objects.filter(id_category=result.id_category) if ord(food.nutriscore) < ord(result.nutriscore)]
-        paginator = Paginator(list_substitute, 6)
-        page = request.GET.get('page')
-        list_page_substitute = paginator.get_page(page)
-        context = {"product":result, "list_substitute": list_page_substitute}
+        if len(list_substitute) > 6:
+            paginator = Paginator(list_substitute, 6)
+            page = request.GET.get('page')
+            list_substitute = paginator.get_page(page)
+
+        context = {"product":result, "list_substitute": list_substitute}
 
         return render(request, "food_substitute/search.html", context)
 
