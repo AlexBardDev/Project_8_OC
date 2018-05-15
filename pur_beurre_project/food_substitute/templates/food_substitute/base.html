@@ -34,7 +34,13 @@
 
   </head>
 
-  <body id="page-top">
+  <body id="page-top" {% if messages %}style="background-color: rgb(78, 194, 0);"{% endif %}>
+
+    {% if messages %}
+    	{% for message in messages %}
+		<h1 class="special_message text-center">{{ message }}</h1>
+	{% endfor %}
+    {% endif %}
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">

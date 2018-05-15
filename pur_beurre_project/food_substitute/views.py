@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 def home(request):
     """This view returns the home of the web site."""
@@ -64,6 +65,8 @@ def login_user(request):
         if user:
             login(request, user)
 
+        messages.add_message(request, messages.SUCCESS, "Vous êtes maintenant connectés !")
+
         if next_url == "/bookmark/":
             return redirect("bookmark")
         elif "/search/" in next_url:
@@ -88,6 +91,8 @@ def create_account(request):
         user = authenticate(username=email, password=password)
         if user:
             login(request, user)
+
+        messages.add_message(request, messages.SUCCESS, "Votre compte a été créé avec succès et vous êtes maintenant connecté.")
         return redirect("home")
     else:
         return render(request, "food_substitute/account.html")
@@ -96,7 +101,7 @@ def logout_user(request):
     """This view logs out a user."""
 
     logout(request)
-
+    messages.add_message(request, messages.SUCCESS, "Vous êtes déconnecté.")
     return redirect("home")
 
 @login_required
@@ -117,7 +122,8 @@ def save_product(request, name_product):
     user = request.user
 
     Bookmark.objects.create(id_user=user, id_product=product)
-
+    
+    messages.add_message(request, messages.SUCCESS, "Substitut sauvegardé avec succès !")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def legal_notices(request):
