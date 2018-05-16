@@ -64,15 +64,17 @@ def login_user(request):
         user = authenticate(username=email, password=password)
         if user:
             login(request, user)
+            messages.add_message(request, messages.SUCCESS, "Vous êtes maintenant connectés !")
 
-        messages.add_message(request, messages.SUCCESS, "Vous êtes maintenant connectés !")
-
-        if next_url == "/bookmark/":
-            return redirect("bookmark")
-        elif "/search/" in next_url:
-            return HttpResponseRedirect(next_url)
+            if next_url == "/bookmark/":
+                return redirect("bookmark")
+            elif "/search/" in next_url:
+                return HttpResponseRedirect(next_url)
+            else:
+                return redirect("home")
         else:
-            return redirect("home")
+            messages.add_message(request, messages.WARNING, "Mauvais email ou mauvais mot de passe.")
+            return render(request, "food_substitute/login.html", {"next": next_url})
     else:
         next_url = request.GET.get("next")
         if next_url is not None and "/save_product/" in next_url:
