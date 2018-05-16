@@ -88,13 +88,16 @@ def create_account(request):
     if request.method == "POST":
         email = request.POST.get("email")
         password = request.POST.get("password")
-        new_user = User.objects.create_user(email, email, password)
-        
-        user = authenticate(username=email, password=password)
-        if user:
-            login(request, user)
 
-        messages.add_message(request, messages.SUCCESS, "Votre compte a été créé avec succès et vous êtes maintenant connecté.")
+        if len(User.objects.filter(username=email)) != 0:
+            messages.add_message(request, messages.WARNING, "Votre compte existe déjà.")
+        else:
+            new_user = User.objects.create_user(email, email, password)
+            user = authenticate(username=email, password=password)
+            if user:
+                login(request, user)
+                messages.add_message(request, messages.SUCCESS, "Votre compte a été créé avec succès et vous êtes maintenant connecté.")
+
         return redirect("home")
     else:
         return render(request, "food_substitute/account.html")
