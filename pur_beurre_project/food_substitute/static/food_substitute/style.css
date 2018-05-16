@@ -156,7 +156,7 @@ section form
 }
 
 /* Common value for not_found.html, suggestion.html and bookmark.html */
-#not_found, #suggestions, #bookmarks
+#not_found, #suggestions, #bookmarks, #no_product
 {
 	background-color: rgb(222, 148, 64);
 	min-height: 600px;

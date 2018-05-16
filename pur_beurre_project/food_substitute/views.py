@@ -52,11 +52,14 @@ def search(request, input_user):
 def display(request, name_product):
     """This view displays the information about a selected product."""
 
-    product = Food.objects.filter(name=name_product)[0]
-
-    context = {"product": product, "list_letters":["A", "B", "C", "D", "E"]}
-
-    return render(request, "food_substitute/display.html", context)
+    try:
+        product = Food.objects.filter(name=name_product)[0]
+    except IndexError:
+        context = {}
+    else:
+        context = {"product": product, "list_letters":["A", "B", "C", "D", "E"]}
+    finally:
+        return render(request, "food_substitute/display.html", context)
 
 def login_user(request):
     """This view allows the connexion of the users."""
@@ -71,7 +74,7 @@ def login_user(request):
         user = authenticate(username=email, password=password)
         if user:
             login(request, user)
-            messages.add_message(request, messages.SUCCESS, "Vous êtes maintenant connectés !")
+            messages.add_message(request, messages.SUCCESS, "Vous êtes maintenant connecté !")
 
             if next_url == "/bookmark/":
                 return redirect("bookmark")
