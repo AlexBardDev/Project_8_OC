@@ -1,8 +1,3 @@
-.special_message
-{
-	margin-top: 70px;
-}
-
 body
 {
 	font-family: "Scope One", sans-serif;
@@ -302,4 +297,11 @@ footer a, footer a:visited
 footer a:hover
 {
 	color: white;
+}
+
+.special_message
+{
+	margin-top: 70px;
+	font-style: italic;
+	font-size: 1.5em;
 }
