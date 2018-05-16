@@ -3,6 +3,7 @@
 {% block title_page %}Informations produits{% endblock %}
 
 {% block content %}
+
 	{% include 'food_substitute/product.html' %}
 
 	<section class="container-fluid" id="display">
@@ -19,7 +20,6 @@
 					{% endfor %}
 				</p>
 			</div>
-			
 			<div class="col-md-6">
 				<h2>Repères nutritionnels pour 100g</h2>
 				<p>Calories : {{ product.id_nutritional_information.calories }}</p>

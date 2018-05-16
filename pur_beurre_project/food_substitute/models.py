@@ -1,3 +1,4 @@
+#Import django libraries
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -24,7 +25,8 @@ class NutritionalInformation(models.Model):
     sodium = models.FloatField()
 
     def __str__(self):
-        return """Informations nutritionelles pour le produit : {}.""".format(self.food_set.all()[0].name)
+        return """Informations nutritionelles pour le produit : {}.""".format(
+            self.food_set.all()[0].name)
 
 class Food(models.Model):
     """This class is the 'Food' table in the database. It stores all the
@@ -49,4 +51,3 @@ class Bookmark(models.Model):
 
     def __str__(self):
         return """{} a enregistré {}.""".format(self.id_user.username, self.id_product.name)
-

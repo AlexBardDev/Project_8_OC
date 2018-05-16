@@ -1,3 +1,4 @@
+/* Font policy for the whole web site */
 body
 {
 	font-family: "Scope One", sans-serif;
@@ -8,6 +9,7 @@ h1, h2, h3, h4, h5, h6
 	font-family: "Open Sans", sans-serif;	
 }
 
+/* Navigation */
 nav form
 {
 	margin-right: 20px;
@@ -24,6 +26,7 @@ nav a span
 	color: black;
 }
 
+/* Home(=home.html) */
 #about
 {
 	background: url('images/image_home.jpeg') no-repeat fixed top center;
@@ -71,6 +74,7 @@ section form
 	background-color: rgb(134, 235, 230);
 }
 
+/* Product(=product.html) */
 #product
 {
 	background-color: black;
@@ -93,6 +97,7 @@ section form
 	border-radius: 5px;
 }
 
+/* Substitute(=search.html) */
 #substitute
 {
 	background-color: rgb(196, 85, 37);
@@ -118,6 +123,12 @@ section form
 	left: 270px;
 }
 
+#substitute a p
+{
+	margin-top: 10px;
+}
+
+/* Links */
 #substitute a, #substitute a:visited, #suggestions a, #suggestions a:visited, #display a, #display a:visited, #login a, #login a:visited, #legal_notices a, #legal_notices a:visited, #bookmarks a, #bookmarks a:visited
 {
 	color: rgb(134, 235, 230);
@@ -129,11 +140,7 @@ section form
 	font-style: italic;
 }
 
-#substitute a p
-{
-	margin-top: 10px;
-}
-
+/* Pagination(=search.html) */
 .step-links
 {
 	width: 200px;
@@ -148,6 +155,7 @@ section form
 	font-weight: bold;
 }
 
+/* Common value for not_found.html, suggestion.html and bookmark.html */
 #not_found, #suggestions, #bookmarks
 {
 	background-color: rgb(222, 148, 64);
@@ -171,6 +179,7 @@ section form
 	margin-bottom: 20px;
 }
 
+/* Display data(=display.html) */
 #display
 {
 	background-color: rgb(196, 85, 37);
@@ -212,6 +221,7 @@ section form
 	padding: 10px;
 }
 
+/* Login and new account */
 #login, #new_account
 {
 	background-color: rgb(196, 85, 37);
@@ -253,6 +263,7 @@ section form
 	color: rgb(52, 90, 97);
 }
 
+/* Legal notices(=legal_notices.html) */
 #legal_notices
 {
 	background-color: rgb(196, 85, 37);
@@ -272,6 +283,7 @@ section form
 	color: white;
 }
 
+/* Bookmark(=Bookmark.html) */
 #bookmarks p
 {
 	margin-top: 15px;
@@ -282,6 +294,7 @@ section form
 	margin-top: 50px;
 }
 
+/* Footer */
 footer
 {
 	border-top: 2px black solid;
@@ -299,6 +312,7 @@ footer a:hover
 	color: white;
 }
 
+/* Message with Django(=base.html) */
 .special_message
 {
 	margin-top: 70px;

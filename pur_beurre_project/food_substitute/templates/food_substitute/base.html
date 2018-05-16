@@ -29,7 +29,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'food_substitute/images/favicon.ico' %}">
 
-    <!-- Specifi CSS for this project -->
+    <!-- Specific CSS for this project -->
     <link rel="stylesheet" href="{% static 'food_substitute/style.css' %}">
 
   </head>
@@ -45,7 +45,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+          <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}">
 	  <img src="{% static 'food_substitute/images/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="logo"/>
 	  <span>Pur Beurre</span>
 	</a>
@@ -82,6 +82,7 @@
 
     {% block content %}{% endblock %}
 
+    <!-- Footer -->
     <footer class="container-fluid">
 	    <div class="row text-center">
 		    <a href="{% url 'legal_notices' %}" class="col-xl-6">Mentions Légales</a>

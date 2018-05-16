@@ -3,8 +3,10 @@
 {% block title_page %}Rechercher un substitut plus sain{% endblock %}
 
 {% block content %}
+
 	{% include 'food_substitute/product.html' %}
 	
+	<!-- Display healthier substitutes -->
 	<section class="container-fluid" id="substitute">
 		{% if list_substitute %}
 			<h3 class="text-center">Vous pouvez remplacer cet aliment par :</h3>
@@ -20,6 +22,8 @@
 					</div>
 				{% endfor %}
 			</div>
+
+			<!-- Pagination -->
 			<div class="pagination">
 			    <span class="step-links">
 			        {% if list_substitute.has_previous %}
