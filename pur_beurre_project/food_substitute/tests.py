@@ -1,7 +1,12 @@
+#Create a DATABASE for the tests !!!!
+
 #Import django libraries
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
+from .models import Food
+from selenium.webdriver.firefox.webdriver import WebDriver
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 class ViewsTests(TestCase):
     """This class contains all the tests for the views of this app."""
@@ -10,6 +15,11 @@ class ViewsTests(TestCase):
         """This method is called before each test."""
 
         pass
+
+    def new_food(self):
+        """This function creates a new row in the 'Food' table."""
+
+        Food.objects.create()
 
     def create_user(self):
         """This function creates a new user for a testing purpose."""
@@ -128,3 +138,29 @@ class ViewsTests(TestCase):
 
         response = self.client.get(reverse('legal_notices'))
         assert response.status_code == 200
+
+class IntegrationTests(StaticLiveServerTestCase):
+    """This class contains all the integration tests."""
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.selenium = WebDriver()
+        cls.selenium.implicitly_wait(10)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.selenium.quit()
+        super().tearDownClass()
+
+    def test_get_home_page_do_a_research_and_see_a_product(self):
+        """This test gets the home page. Then, submits a form and does a
+        research. And finally, displays the product page."""
+
+        self.selenium.get(self.live_server_url)
+        search_input = self.selenium.find_element_by_name("research")
+        search_input.send_keys("Nutella")
+        self.selenium.find_element_by_class_name("btn-outline-primary").click()
+        self.selenium.find_element_by_css_selector(".row a").click()
+        content = self.selenium.find_element_by_tag_name("a")
+        assert content.text == "Voir la fiche complète d'OpenFoodFacts"

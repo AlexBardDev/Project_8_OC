@@ -1,0 +1,24 @@
+1526556399136	geckodriver	INFO	geckodriver 0.20.1
+1526556399153	geckodriver	INFO	Listening on 127.0.0.1:38431
+1526556400060	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.7iAI6vcV3Ko5"
+1526556405274	Marionette	INFO	Listening on port 43311
+1526556405298	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1526557496341	geckodriver	INFO	geckodriver 0.20.1
+1526557496345	geckodriver	INFO	Listening on 127.0.0.1:60053
+1526557497350	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.krd1PQCd6bd4"
+1526557501210	Marionette	INFO	Listening on port 35961
+1526557501272	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1526557620506	geckodriver	INFO	geckodriver 0.20.1
+1526557620511	geckodriver	INFO	Listening on 127.0.0.1:40193
+1526557621516	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.xQritrur38mH"
+1526557625708	Marionette	INFO	Listening on port 46455
+1526557625742	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1526557857402	geckodriver	INFO	geckodriver 0.20.1
+1526557857407	geckodriver	INFO	Listening on 127.0.0.1:48747
+1526557858411	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Ee8sbpKwH6t0"
+1526557862211	Marionette	INFO	Listening on port 34233
+1526557862239	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping

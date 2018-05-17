@@ -52,14 +52,11 @@ def search(request, input_user):
 def display(request, name_product):
     """This view displays the information about a selected product."""
 
-    try:
-        product = Food.objects.filter(name=name_product)[0]
-    except IndexError:
-        context = {}
-    else:
-        context = {"product": product, "list_letters":["A", "B", "C", "D", "E"]}
-    finally:
-        return render(request, "food_substitute/display.html", context)
+    product = Food.objects.filter(name=name_product)[0]
+
+    context = {"product": product, "list_letters":["A", "B", "C", "D", "E"]}
+
+    return render(request, "food_substitute/display.html", context)
 
 def login_user(request):
     """This view allows the connexion of the users."""
@@ -138,17 +135,13 @@ def bookmark_user(request):
 def save_product(request, name_product):
     """This view saves a new bookmark for the current user."""
 
-    try:
-        product = Food.objects.filter(name=name_product)[0]
-    except IndexError:
-        messages.add_message(request, messages.SUCCESS, "Erreur. Veuillez réessayer plus tard...")
-    else:
-        user = request.user
+    product = Food.objects.filter(name=name_product)[0]
+    user = request.user
 
-        #Create a new bookmark
-        Bookmark.objects.create(id_user=user, id_product=product)
+    #Create a new bookmark
+    Bookmark.objects.create(id_user=user, id_product=product)
 
-        messages.add_message(request, messages.SUCCESS, "Substitut sauvegardé avec succès !")
+    messages.add_message(request, messages.SUCCESS, "Substitut sauvegardé avec succès !")
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
