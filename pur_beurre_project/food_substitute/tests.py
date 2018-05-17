@@ -164,3 +164,35 @@ class IntegrationTests(StaticLiveServerTestCase):
         self.selenium.find_element_by_css_selector(".row a").click()
         content = self.selenium.find_element_by_tag_name("a")
         assert content.text == "Voir la fiche complète d'OpenFoodFacts"
+    
+    def test_create_new_account(self):
+        """This test gets the 'create account' page and simulates a new user."""
+
+        self.selenium.get(reverse('create_account'))
+        email_input = self.selenium.find_element_by_name("email")
+        email_input.send_keys("test@mail.com")
+        password_input = self.selenium.find_element_by_name("password")
+        password_input.send_keys("passwd")
+        self.selenium.find_element_by_css_selector("input[type='submit']").click()
+        content = self.selenium.find_element_by_class_name("special_message")
+        assert content.text == "Votre compte a été créé avec succès et vous êtes maintenant connecté."
+
+    def test_login_bookmarks_and_logout(self):
+        """This test gets the 'login' page. It simulates a user that logs in,
+        does a research, saves a new substitute, sees the bookmarks page and
+        logs out."""
+
+        self.selenium.get(reverse('login'))
+        email_input = self.selenium.find_element_by_name("email")
+        email_input.send_keys("test@mail.com")
+        password_input = self.selenium.find_element_by_name("password")
+        password_input.send_keys("passwd")
+        self.selenium.find_element_by_css_selector("input[type='submit']").click()
+
+        search_input = self.selenium.find_element_by_name("research")
+        search_input.send_keys("Nutella")
+        self.selenium.find_element_by_class_name("btn-outline-primary").click()
+
+        self.selenium.find_element_by_css_selector(".row p a").click()
+
+#click on the carrot menu/logout
