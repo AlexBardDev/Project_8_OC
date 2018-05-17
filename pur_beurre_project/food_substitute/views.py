@@ -138,13 +138,18 @@ def bookmark_user(request):
 def save_product(request, name_product):
     """This view saves a new bookmark for the current user."""
 
-    product = Food.objects.filter(name=name_product)[0]
-    user = request.user
+    try:
+        product = Food.objects.filter(name=name_product)[0]
+    except IndexError:
+        messages.add_message(request, messages.SUCCESS, "Erreur. Veuillez réessayer plus tard...")
+    else:
+        user = request.user
 
-    #Create a new bookmark
-    Bookmark.objects.create(id_user=user, id_product=product)
+        #Create a new bookmark
+        Bookmark.objects.create(id_user=user, id_product=product)
 
-    messages.add_message(request, messages.SUCCESS, "Substitut sauvegardé avec succès !")
+        messages.add_message(request, messages.SUCCESS, "Substitut sauvegardé avec succès !")
+
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def legal_notices(request):
