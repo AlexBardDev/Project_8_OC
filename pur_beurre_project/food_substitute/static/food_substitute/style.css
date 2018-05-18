@@ -263,6 +263,11 @@ section form
 	color: rgb(52, 90, 97);
 }
 
+#background_picture
+{
+	background: url('images/image_home.jpeg') center no-repeat;
+}
+
 /* Legal notices(=legal_notices.html) */
 #legal_notices
 {
