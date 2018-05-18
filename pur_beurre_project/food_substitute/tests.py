@@ -1,10 +1,12 @@
-#Import django libraries
+#External libraries
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .models import Food, Category, NutritionalInformation
-from selenium.webdriver.firefox.webdriver import WebDriver
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from selenium.webdriver.firefox.webdriver import WebDriver
+
+#Local library
+from .models import Food, Category, NutritionalInformation
 
 class ViewsTests(TestCase):
     """This class contains all the tests for the views of this app."""
@@ -20,20 +22,22 @@ class ViewsTests(TestCase):
         new_category = Category.objects.create(name="produits-a-tartiner")
 
         nutri_product = NutritionalInformation.objects.create(calories=539,
-                fat=30, saturated_fat=10, carbohydrates=57, sugars=56, proteins=6,
-                salt=0, sodium=0)
+                                                              fat=30, saturated_fat=10,
+                                                              carbohydrates=57, sugars=56,
+                                                              proteins=6, salt=0, sodium=0)
         product = Food.objects.create(name="Nutella", nutriscore="e",
-                image="https://static.openfoodfacts.org/images/products/301/762/042/1006/front_fr.87.400.jpg",
-                link="https://fr.openfoodfacts.org/produit/3017620421006/nutella-ferrero",
-                id_category=new_category, id_nutritional_information=nutri_product)
+                                      image="https://static.openfoodfacts.org/images/products/301/762/042/1006/front_fr.87.400.jpg",
+                                      link="https://fr.openfoodfacts.org/produit/3017620421006/nutella-ferrero",
+                                      id_category=new_category, id_nutritional_information=nutri_product)
 
         nutri_substitute = NutritionalInformation.objects.create(calories=539,
-                fat=31, saturated_fat=5, carbohydrates=57, sugars=55, proteins=5,
-                salt=0, sodium=0)
+                                                                 fat=31, saturated_fat=5,
+                                                                 carbohydrates=57, sugars=55,
+                                                                 proteins=5, salt=0, sodium=0)
         substitute = Food.objects.create(name="Pralina", nutriscore="d",
-                image="https://static.openfoodfacts.org/images/products/326/385/223/1719/front_fr.24.400.jpg",
-                link="https://fr.openfoodfacts.org/produit/3263852231719/pralina-leader-price",
-                id_category=new_category, id_nutritional_information=nutri_substitute)
+                                         image="https://static.openfoodfacts.org/images/products/326/385/223/1719/front_fr.24.400.jpg",
+                                         link="https://fr.openfoodfacts.org/produit/3263852231719/pralina-leader-price",
+                                         id_category=new_category, id_nutritional_information=nutri_substitute)
 
     def create_user(self):
         """This function creates a new user for a testing purpose."""
@@ -66,7 +70,7 @@ class ViewsTests(TestCase):
 
     def test_display(self):
         """This function tests the 'display' view."""
-        
+
         self.new_food()
         response = self.client.get(reverse('display', args=['Nutella']))
         assert response.status_code == 200
@@ -172,24 +176,26 @@ class IntegrationTests(StaticLiveServerTestCase):
 
     def import_data(self):
         """This method imports some data in the database."""
-       
+
         new_category = Category.objects.create(name="produits-a-tartiner")
 
         nutri_product = NutritionalInformation.objects.create(calories=539,
-                fat=30, saturated_fat=10, carbohydrates=57, sugars=56, proteins=6,
-                salt=0, sodium=0)
+                                                              fat=30, saturated_fat=10,
+                                                              carbohydrates=57, sugars=56,
+                                                              proteins=6, salt=0, sodium=0)
         product = Food.objects.create(name="Nutella", nutriscore="e",
-                image="https://static.openfoodfacts.org/images/products/301/762/042/1006/front_fr.87.400.jpg",
-                link="https://fr.openfoodfacts.org/produit/3017620421006/nutella-ferrero",
-                id_category=new_category, id_nutritional_information=nutri_product)
+                                      image="https://static.openfoodfacts.org/images/products/301/762/042/1006/front_fr.87.400.jpg",
+                                      link="https://fr.openfoodfacts.org/produit/3017620421006/nutella-ferrero",
+                                      id_category=new_category, id_nutritional_information=nutri_product)
 
         nutri_substitute = NutritionalInformation.objects.create(calories=539,
-                fat=31, saturated_fat=5, carbohydrates=57, sugars=55, proteins=5,
-                salt=0, sodium=0)
+                                                                 fat=31, saturated_fat=5,
+                                                                 carbohydrates=57, sugars=55,
+                                                                 proteins=5, salt=0, sodium=0)
         substitute = Food.objects.create(name="Pralina", nutriscore="d",
-                image="https://static.openfoodfacts.org/images/products/326/385/223/1719/front_fr.24.400.jpg",
-                link="https://fr.openfoodfacts.org/produit/3263852231719/pralina-leader-price",
-                id_category=new_category, id_nutritional_information=nutri_substitute)
+                                         image="https://static.openfoodfacts.org/images/products/326/385/223/1719/front_fr.24.400.jpg",
+                                         link="https://fr.openfoodfacts.org/produit/3263852231719/pralina-leader-price",
+                                         id_category=new_category, id_nutritional_information=nutri_substitute)
 
     def create_new_user(self):
         """This method creates a new user in the database."""
@@ -208,7 +214,7 @@ class IntegrationTests(StaticLiveServerTestCase):
         self.selenium.find_element_by_css_selector(".row a[href*='/product/']").click()
         content = self.selenium.find_element_by_css_selector("a[target='_blank']")
         assert content.text == "Voir la fiche complète d'OpenFoodFacts"
-    
+
     def test_create_new_account(self):
         """This test gets the 'create account' page and simulates a new user."""
 
@@ -242,7 +248,7 @@ class IntegrationTests(StaticLiveServerTestCase):
 
         substitute_name = self.selenium.find_element_by_css_selector(".row a p").text
         self.selenium.find_element_by_css_selector(".row p a").click()
-        
+
         self.selenium.find_element_by_css_selector("nav a[href*='/bookmark/']").click()
         product_name = self.selenium.find_element_by_css_selector("a p").text
 
