@@ -84,17 +84,19 @@ section form
 #product div
 {
 	height: 200px;
+	width: 250px;
+	margin: auto;
 }
 
 #product div p
 {
-	position: absolute;
-	top: 128px;
-	left: 510px;
+	position: relative;
+	width: 250px;
+	top: -20px;
 	padding: 5px;
 	font-weight: bold;
-	background-color: rgb(250,250,250);
-	border-radius: 5px;
+	background-color: white;
+	border-radius: 20px;
 }
 
 /* Substitute(=search.html) */
@@ -323,4 +325,48 @@ footer a:hover
 	margin-top: 70px;
 	font-style: italic;
 	font-size: 1.5em;
+}
+
+/* Media Queries */
+@media all and (max-width: 1150px)
+{
+	.nutriscore
+	{
+		left: 240px;
+	}
+}
+@media all and (max-width: 992px)
+{
+	.nutriscore
+	{
+		left: 210px;
+	}
+}
+@media all and (max-width: 870px)
+{
+	.nutriscore
+	{
+		left: 200px;
+	}
+}
+@media all and (max-width: 768px)
+{
+	.nutriscore
+	{
+		left: 430px;
+	}
+}
+@media all and (max-width: 670px)
+{
+	.nutriscore
+	{
+		left: 300px;
+	}
+}
+@media all and (max-width: 576px)
+{
+	.nutriscore
+	{
+		left: 200px;
+	}
 }
