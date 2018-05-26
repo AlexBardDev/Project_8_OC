@@ -1,3 +1,6 @@
+"""
+Initialization of the app.
+"""
 from django.apps import AppConfig
 
 

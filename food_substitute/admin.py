@@ -1,3 +1,6 @@
+"""
+This script customizes the admin interface.
+"""
 #Import django libraries
 from django.contrib import admin
 from .models import Food, Category, NutritionalInformation, Bookmark

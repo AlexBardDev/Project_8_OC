@@ -1,3 +1,7 @@
+"""
+This script contains all the models of the project.
+"""
+
 #Import django libraries
 from django.db import models
 from django.contrib.auth.models import User

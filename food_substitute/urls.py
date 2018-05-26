@@ -1,3 +1,7 @@
+"""
+Here are the url routes of the app.
+"""
+
 #Import django libraries
 from django.urls import path
 from . import views

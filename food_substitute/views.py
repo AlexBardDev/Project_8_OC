@@ -1,3 +1,7 @@
+"""
+This script contains all the views of my app.
+"""
+
 #Standard library
 import re
 

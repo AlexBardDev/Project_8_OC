@@ -1,3 +1,7 @@
+"""
+This script contains all the tests of the project.
+"""
+
 #External libraries
 from django.test import TestCase
 from django.urls import reverse
