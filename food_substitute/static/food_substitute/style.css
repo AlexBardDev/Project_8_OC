@@ -29,7 +29,7 @@ nav a span
 /* Home(=home.html) */
 #about
 {
-	background: url('images/image_home.jpeg') no-repeat fixed top center;
+	background: url('images/image_home.jpeg') repeat fixed top center;
 }
 
 #about h1, #about h2
