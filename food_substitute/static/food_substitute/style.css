@@ -267,7 +267,7 @@ section form
 
 #background_picture
 {
-	background: url('images/image_home.jpeg') center no-repeat;
+	background: url('images/image_home.jpeg') center repeat;
 }
 
 /* Legal notices(=legal_notices.html) */
